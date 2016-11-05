@@ -16,15 +16,16 @@ namespace Lab9
         {
             get
             { return radius; }
-
+            //set local Class variable radius
             set
             { radius = value; }
         }
 
         public Circle(double x)
         {
-            //this.radius= radius; //alt way turns user input into local variable
+            //Get x from user, change to local Class variable radius
             radius = x;
+            //this.radius= radius; //alt way turns user input into local Circle variable.
         }
 
         public double getCircumference()

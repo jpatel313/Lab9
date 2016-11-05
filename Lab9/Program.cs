@@ -10,25 +10,39 @@ namespace Lab9
     {
         static void Main(string[] args)
         {
-            //get input
-            Console.WriteLine("Welcome to the Circle Tester\n Enter radius: ");
-            double x = double.Parse(Console.ReadLine());
+            Console.WriteLine("Welcome to the Circle Tester");
+            string y = "y";
 
-            //create circle object
-            Circle  userCircle = new Circle(x);
-            
-            //display circumference/area
-            {
-               return userCircle.getFormattedCircumference(x);
-                return formatNumber(getCircumference(x));
-                Console.WriteLine("\nCircumference: {0}\nArea:         {1}", formatNumber(getFormattedCircumference(x), return formatNumber(getArea(x)); ;
+            while (y == "y")
+
+            {   //Get input. Create object. Display Output
+                Console.Write("\nEnter radius: ");
+                double x = double.Parse(Console.ReadLine());
+                Circle userCircle = new Circle(x);
+                Console.Write("\nCircumference: {0}\n\nArea: {1}", userCircle.getFormattedArea(), userCircle.getFormattedCircumference());
+
+                //Continue?
+                Console.Write("\n\nContinue? (y/n): ");
+                string inputResponse = Console.ReadLine();
+
+                if (inputResponse == "y" || inputResponse == "Y")  
+                {//continue allows user to skip past break 
+                 continue;
+                }
+
+                else if (inputResponse == "n" || inputResponse == "N")
+                { Console.WriteLine("\nGoodbye!"); }
+
+                else if (inputResponse != "y" || inputResponse != "Y"||inputResponse == "")
+                {
+                Console.WriteLine("You typed something other than y/n");
+                Console.WriteLine("\nGoodbye!");
+                }
+                //breaks out of program if anything other than y/Y 
+                break;    y = "y";
             }
-
-
+                //allows user to enter next radius
+              
         }
-
-
-
     }
-
 }
