@@ -11,9 +11,9 @@ namespace Lab9
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Circle Tester");
-            string y = "y";
-
-            while (y == "y")
+            int counter = 0;
+            string inputResponse = "y";
+            while (inputResponse == "y")
 
             {   //Get input. Create object. Display Output
                 Console.Write("\nEnter radius: ");
@@ -21,28 +21,36 @@ namespace Lab9
                 Circle userCircle = new Circle(x);
                 Console.Write("\nCircumference: {0}\n\nArea: {1}", userCircle.getFormattedArea(), userCircle.getFormattedCircumference());
 
+                //Counts number of times user creates a circle object.
+                ++counter;
+                
                 //Continue?
                 Console.Write("\n\nContinue? (y/n): ");
-                string inputResponse = Console.ReadLine();
+                inputResponse = Console.ReadLine();
+           
+                    if (inputResponse == "y" || inputResponse == "Y")
+                        //Continue allows user to skip past break.
+                    {
+                       
+                        continue;
+                    }
 
-                if (inputResponse == "y" || inputResponse == "Y")  
-                {//continue allows user to skip past break 
-                 continue;
-                }
+                    else if (inputResponse == "n" || inputResponse == "N")
+                    {
+                        
+                        Console.WriteLine("\nGoodbye! You created {0} Circle object(s)", counter);
+                        break;
+                    }
 
-                else if (inputResponse == "n" || inputResponse == "N")
-                { Console.WriteLine("\nGoodbye!"); }
-
-                else if (inputResponse != "y" || inputResponse != "Y"||inputResponse == "")
-                {
-                Console.WriteLine("You typed something other than y/n");
-                Console.WriteLine("\nGoodbye!");
-                }
-                //breaks out of program if anything other than y/Y 
-                break;    y = "y";
-            }
-                //allows user to enter next radius
-              
+                    else if (inputResponse != "y" || inputResponse != "Y" || inputResponse == "")
+                    {
+                        Console.WriteLine("You typed something other than y/n...");
+                        Console.WriteLine("Goodbye! You created {0} Circle object(s)", counter);
+                        break;
+                    }
+                    
+                     break;
+            } 
         }
     }
 }
